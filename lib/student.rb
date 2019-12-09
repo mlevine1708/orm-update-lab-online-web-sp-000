@@ -46,7 +46,7 @@ attr_reader :id
     DB[:conn].execute(sql, self.name, self.grade, self.id)
   end
 
-  def self.create(name:, grade:)
+  def self.create(name, grade)
     student = Student.new(name, grade)
     student.save
     student
@@ -63,6 +63,6 @@ attr_reader :id
     sql = "SELECT * FROM students WHERE name = ?"
     result = DB[:conn].execute(sql, name)[0]
     Student.new(result[0], result[1], result[2])
-  end 
+  end
 
 end
